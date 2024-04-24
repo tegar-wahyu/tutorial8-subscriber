@@ -25,3 +25,13 @@
 ### Simulation slow subscriber
 ![alt text](images/SimulationSlow.png)
 > Gambar tersebut menunjukkan bahwa subscriber mengalami keterlambatan dalam memproses data yang diterima dari message broker, yang menyebabkan penundaan dalam setiap proses. Akibatnya, queued messages di message broker akan terus meningkat seiring dengan bertambahnya penundaan, karena publisher mengirimkan pesan lebih cepat dibandingkan konsumer yang menerima pesan. Dalam kasus ini, jumlah maksimum pesan yang mengantre mencapai 21 saat menjalankan aplikasi publisher sebanyak 5 kali menggunakan perintah `cargo run`.
+
+
+### Reflection and Running at least three subscribers
+![alt text](images/3SubTerminal.png)
+![alt text](images/3SubGraph.png)
+
+> Seperti halnya pada simulasi slow subscriber sebelumnya, jika menjalankan lebih dari satu subscriber, pengiriman data akan jauh lebih cepat, dan dalam kasus ini, pesan yang masuk ke dalam queued messages pada message broker menjadi 8. 
+>
+> Hal ini terjadi karena message broker akan mendistribusikan data yang diterima dari publisher ke banyak subscriber yang terhubung.
+Tanpa perlu mengubah kode program, hasil yang berbeda dapat diperoleh hanya dengan mengubah konfigurasi message broker atau jumlah subscriber yang berjalan. Inilah yang disebut dengan pendekatan `event driven`, di mana perilaku sistem ditentukan oleh cara komponen-komponen seperti publisher, subscriber, dan message broker dikonfigurasi dan berinteraksi satu sama lain.
